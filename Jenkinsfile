@@ -1,6 +1,6 @@
 pipeline{
     environment {
-        DIRECTORY_PATH = "${env.WORKSPACE}"  // Update path as needed
+        DIRECTORY_PATH = "${env.WORKSPACE}C:\Users\Dell\OneDrive\Desktop\Files_assignments\Professional_Practice_in_IT-SIT753\Jenkins-pipeline-job"  // Update path as needed
         TESTING_ENVIRONMENT = 'test'
         PRODUCTION_ENVIRONMENT = "${env.Geet}"
     }
