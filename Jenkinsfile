@@ -5,7 +5,7 @@ pipeline {
             steps {
                 echo 'MAVEN, a build automation tool, is being used to compile and package the code.' 
                 }
-.'          post {
+            post {
                 success {
                     echo 'Build successfully!'
                 }
