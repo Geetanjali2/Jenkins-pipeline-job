@@ -100,42 +100,11 @@ pipeline {
         }
     }
 
-    post {
-        always {
-            emailext(
-                mimeType: 'text/html',
-                to: 'geetanjali.h02@gmail.com',
-                subject: "Jenkins Pipeline Status: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-                    <html>
-                        <body>
-                            <h1>Pipeline Completion Report</h1>
-                            <p><strong>Build:</strong> ${env.JOB_NAME} #${env.BUILD_NUMBER}</p>
-                            <p><strong>Status:</strong> ${currentBuild.currentResult}</p>
-                            <p><strong>Build URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                        </body>
-                    </html>
-                """,
-                attachLog: true
-            )
+    post{
+        always{
+              mail to: "azadehghneiat@gmail.com",
+              subject: "Build Status Email",
+              body: "Build log attached!"
+                }
         }
-        failure {
-            emailext(
-                mimeType: 'text/html',
-                to: 'geetanjali.h02@gmail.com',
-                subject: "FAILURE in Pipeline: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                body: """
-                    <html>
-                        <body>
-                            <h1>Pipeline Failure Report</h1>
-                            <p><strong>Build:</strong> ${env.JOB_NAME} #${env.BUILD_NUMBER}</p>
-                            <p><strong>Status:</strong> ${currentBuild.currentResult}</p>
-                            <p><strong>Build URL:</strong> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a></p>
-                        </body>
-                    </html>
-                """,
-                attachLog: true
-            )
-        }
-    }
 }
